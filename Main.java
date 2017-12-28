@@ -1,12 +1,14 @@
 package sample;
 
-        import com.sun.java.swing.plaf.windows.resources.windows;
-        import javafx.application.Application;
-        import javafx.scene.Scene;
-        import javafx.scene.control.Alert;
-        import javafx.scene.layout.StackPane;
-        import javafx.stage.Stage;
-        import javafx.scene.control.Button;
+import com.sun.java.swing.plaf.windows.resources.windows;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 
 public class Main extends Application {
@@ -19,29 +21,56 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage){
+    public void start(Stage primaryStage) {
         window = primaryStage;
         window.setTitle("titlu");
-        Button buton1 = new Button("Clik me");
 
-        // urmatoarea linie setez ce sa faca butonul din prima fereastra
-      // buton1.setOnAction( e -> AlertBox.display(" Titul Fereastra", " Acesta este un mesaj "));
+        //Form
 
-            //asta este pentru clasa confirm
+        final TextField nameInput = new TextField();
+        Button button = new Button("click me");
 
-        buton1.setOnAction(e ->{
-          boolean result =  ConfirmBox.display("Title of window ", "Esti sigur ca vrei sa trimiti poze nud?" );
-            System.out.println(result);
-        });
+        button.setOnAction(e -> isInt(nameInput, nameInput.getText()));
 
 
+        //Layout
 
+        VBox layout = new VBox(10);
+        layout.setPadding(new Insets(20, 20, 20, 20));
+        layout.getChildren().addAll(nameInput, button);
 
-        StackPane layout = new StackPane();
-        layout.getChildren().add(buton1);
         Scene scene = new Scene(layout, 300, 250);
         window.setScene(scene);
         window.show();
+    }
+
+        private boolean isInt(TextField input, String message){
+        try {
+                int age  = Integer.parseInt(input.getText());
+            System.out.println("User is: " + age);
+                return true;
+        } catch (NumberFormatException e){
+            System.out.println("Error " + message + " is not a number");
+            return  false;
+        }
+
+        }
+
+
+
+
 
     }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
