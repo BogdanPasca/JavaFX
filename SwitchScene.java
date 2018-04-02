@@ -33,7 +33,7 @@ public class SwitchScene extends Application {
 
         //Button 2
 
-        Button button2 = new Button("this scene susck, go to scene 3");
+        Button button2 = new Button("this scene is ugly, go to scene 3");
         button2.setOnAction(e -> window.setScene(scene3));
 
         //Button 3
